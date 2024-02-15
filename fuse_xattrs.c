@@ -40,10 +40,6 @@ static int xmp_setxattr(const char *path, const char *name, const char *value, s
         return -ENOENT;
     }
 
-    if (get_namespace(name) != USER) {
-        debug_print("Only user namespace is supported. name=%s\n", name);
-        return -ENOTSUP;
-    }
     if (strlen(name) > XATTR_NAME_MAX) {
         debug_print("attribute name must be equal or smaller than %d bytes\n", XATTR_NAME_MAX);
         return -ERANGE;
@@ -75,10 +71,6 @@ static int xmp_getxattr(const char *path, const char *name, char *value, size_t 
         return -ENOENT;
     }
 
-    if (get_namespace(name) != USER) {
-        debug_print("Only user namespace is supported. name=%s\n", name);
-        return -ENOTSUP;
-    }
     if (strlen(name) > XATTR_NAME_MAX) {
         debug_print("attribute name must be equal or smaller than %d bytes\n", XATTR_NAME_MAX);
         return -ERANGE;
@@ -117,10 +109,6 @@ static int xmp_removexattr(const char *path, const char *name)
         return -ENOENT;
     }
 
-    if (get_namespace(name) != USER) {
-        debug_print("Only user namespace is supported. name=%s\n", name);
-        return -ENOTSUP;
-    }
     if (strlen(name) > XATTR_NAME_MAX) {
         debug_print("attribute name must be equal or smaller than %d bytes\n", XATTR_NAME_MAX);
         return -ERANGE;

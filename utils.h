@@ -27,15 +27,6 @@
         do { if (DEBUG) fprintf(stderr, "%s:%d:%s(): " fmt, __FILENAME__, \
                                 __LINE__, __func__, ##__VA_ARGS__); } while (0)
 
-enum namespace {
-    SECURITY,
-    SYSTEM,
-    TRUSTED,
-    USER,
-    ERROR
-};
-
-enum namespace get_namespace(const char *name);
 char *get_sidecar_path(const char *path);
 char *sanitize_value(const char *value, size_t value_size);
 char *prepend_source_directory(const char *b);
